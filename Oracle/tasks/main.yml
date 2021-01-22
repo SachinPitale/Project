@@ -1,0 +1,10 @@
+---
+# tasks file for Oracle
+- name: configure swap in /etc/waagent.conf  file
+  blockinfile:
+    path: /etc/waagent.conf 
+    block:
+      ResourceDisk.Format=y
+      ResourceDisk.EnableSwap=y
+      ResourceDisk.SwapSizeMB="{{Swap_Size}}"
+    backup: yes 
