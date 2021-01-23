@@ -19,3 +19,9 @@
     state: restarted
   when:  waagent_info.changed
     
+- name: update rh-cloud.repo repo
+  lineinfile:
+    path: /etc/yum.repos.d/rh-cloud.repo
+    regexp: '^enabled'
+    insertafter: https://rhui-3.microsoft.com/pulp/repos//content/dist/rhel/rhui/server/7/$releasever/$basearch/optional/os
+    line: enabled=0
