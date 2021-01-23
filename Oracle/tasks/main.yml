@@ -3,7 +3,7 @@
 - name: configure swap in /etc/waagent.conf  file
   blockinfile:
     path: /etc/waagent.conf 
-    block:
+    block: |
       ResourceDisk.Format=y
       ResourceDisk.EnableSwap=y
       ResourceDisk.SwapSizeMB="{{Swap_Size}}"
