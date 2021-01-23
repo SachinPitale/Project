@@ -20,8 +20,9 @@
   when:  waagent_info.changed
     
 - name: update rh-cloud.repo repo
-  lineinfile:
-    path: /etc/yum.repos.d/rh-cloud.repo
-    regexp: '^enabled'
-    insertafter: name=Red Hat Enterprise Linux 7 Server
-    line: enabled=0
+  shell:
+    cmd: yum-config-manager --enable rhel-7-server-rhui-optional-rpms
+- name: install oracle pre-requiste package
+  yum:
+    name: https://yum.oracle.com/repo/OracleLinux/OL7/latest/x86_64/getPackage/oracle-database-preinstall-19c-1.0-1.el7.x86_64.rpm
+    state: present
