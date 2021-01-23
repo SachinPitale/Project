@@ -8,8 +8,8 @@
       ResourceDisk.EnableSwap=y
       ResourceDisk.SwapSizeMB="{{Swap_Size}}"
     backup: yes
-    register: waagent_info
-
+  register: waagent_info
+  
 - debug:
     msg: "{{waagent_info}}"  
 
