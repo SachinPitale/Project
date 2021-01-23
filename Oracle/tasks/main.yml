@@ -10,7 +10,7 @@
     backup: yes
     register: waagent_info
 
-  debug:
+- debug:
     msg: "{{waagent_info}}"  
 
 - name: Restart the waagent service
