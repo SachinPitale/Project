@@ -12,4 +12,4 @@
 - name: Restart the waagent service
   service:
     name: waagent
-    state: restared  
+    state: restarted  
