@@ -17,4 +17,5 @@
   service:
     name: waagent
     state: restarted
+  when: ! waagent_info.changed
     
