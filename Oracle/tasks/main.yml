@@ -23,5 +23,5 @@
   lineinfile:
     path: /etc/yum.repos.d/rh-cloud.repo
     regexp: '^enabled'
-    insertafter: https://rhui-3.microsoft.com/pulp/repos//content/dist/rhel/rhui/server/7/$releasever/$basearch/optional/os
+    insertafter: name=Red Hat Enterprise Linux 7 Server
     line: enabled=0
