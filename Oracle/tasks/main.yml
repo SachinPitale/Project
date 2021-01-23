@@ -8,3 +8,8 @@
       ResourceDisk.EnableSwap=y
       ResourceDisk.SwapSizeMB="{{Swap_Size}}"
     backup: yes 
+
+- name: Restart the waagent service
+  service:
+    name: waagent
+    state: restared  
