@@ -33,6 +33,18 @@
   yum:
     name: https://yum.oracle.com/repo/OracleLinux/OL7/latest/x86_64/getPackage/oracle-database-preinstall-19c-1.0-1.el7.x86_64.rpm
     state: present
- 
+
+- name: stat check for /etc/security/limits.d/oracle-database-preinstall-19c.conf  file
+  stat:
+    path: /etc/security/limits.d/oracle-database-preinstall-19c.conf
+  register: 19c_stat
+  
+- name: renname the file from  /etc/security/limits.d/oracle-database-preinstall-19c.conf  to /etc/security/limits.d/00-oracle-database-preinstall-19c.conf
+  command: mv /etc/security/limits.d/oracle-database-preinstall-19c.conf /etc/security/limits.d/00-oracle-database-preinstall-19c.conf
+  when: 19c_stat.stat.exist
+
+  
+
+  
     
 

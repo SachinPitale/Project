@@ -1,3 +1,5 @@
 ---
 # vars file for Oracle
 Swap_Size: "16384"
+Soft_Limit: "65536"
+Hard_Limit: "65536"
