@@ -1,5 +1,5 @@
 ---
 # vars file for Oracle
-Swap_Size:  10240
+Swap_Size:  12288
 Soft_Limit: 65536
 Hard_Limit: 65536
