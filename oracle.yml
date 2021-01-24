@@ -1,0 +1,7 @@
+---
+name: Install Oracle database on IAAS platform
+hosts: localhost
+become: yes
+gather_facts: yes
+roles:
+  - role : Roles/Oracle

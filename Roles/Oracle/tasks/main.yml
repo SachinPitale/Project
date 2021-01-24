@@ -1,0 +1,38 @@
+---
+# tasks file for Oracle
+- name: configure swap in /etc/waagent.conf  file
+  blockinfile:
+    path: /etc/waagent.conf 
+    block: |
+      ResourceDisk.Format=y
+      ResourceDisk.EnableSwap=y
+      ResourceDisk.SwapSizeMB="{{Swap_Size}}"
+    backup: yes
+  register: waagent_info
+  
+- debug:
+    msg: "{{waagent_info}}"  
+
+- name: Restart the waagent service
+  service:
+    name: waagent
+    state: restarted
+  when:  waagent_info.changed
+
+
+- name: Remove
+  blockinfile:
+    block: |
+      [rhui-rhel-7-server-rhui-optional-rpms]
+      name=Red Hat Enterprise Linux 7 Server - Optional from RHUI (RPMs)
+      baseurl=https://rhui-1.microsoft.com/pulp/repos//content/dist/rhel/rhui/server/7/$releasever/$basearch/optional/os
+              https://rhui-2.microsoft.com/pulp/repos//content/dist/rhel/rhui/server/7/$releasever/$basearch/optional/os
+              https://rhui-3.microsoft.com/pulp/repos//content/dist/rhel/rhui/server/7/$releasever/$basearch/optional/os
+      enabled=0
+      gpgcheck=1
+      gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+      sslverify=1
+      sslclientcert=/etc/pki/rhui/product/content.crt
+      sslclientkey=/etc/pki/rhui/key.pem
+    state: absent
+
