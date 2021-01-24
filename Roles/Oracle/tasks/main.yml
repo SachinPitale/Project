@@ -22,7 +22,7 @@
 
 - name: Enabled rhel-7-server-rhui-optional-rpms repo
   template:
-    src: template/rh-cloud-repo.j2
+    src: rh-cloud-repo.j2
     dest: /etc/yum.repos.d/rh-cloud.repo
     owner: root
     group: root
