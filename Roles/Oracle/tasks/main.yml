@@ -22,6 +22,7 @@
 
 - name: Remove
   blockinfile:
+    path: /etc/yum.repos.d/rh-cloud.repo
     block: |
       [rhui-rhel-7-server-rhui-optional-rpms]
       name=Red Hat Enterprise Linux 7 Server - Optional from RHUI (RPMs)
@@ -35,4 +36,5 @@
       sslclientcert=/etc/pki/rhui/product/content.crt
       sslclientkey=/etc/pki/rhui/key.pem
     state: absent
+    backup: yes
 
