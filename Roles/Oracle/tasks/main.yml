@@ -43,6 +43,14 @@
   command: mv /etc/security/limits.d/oracle-database-preinstall-19c.conf /etc/security/limits.d/00-oracle-database-preinstall-19c.conf
   when: preinstall_stat.stat.exists
 
+- name: update soft limit and hard limit for root conf
+  template:
+    src: 99-root-conf.j2
+    dest: /etc/security/limits.d/99-root.conf
+    
+
+
+
 
 
   
