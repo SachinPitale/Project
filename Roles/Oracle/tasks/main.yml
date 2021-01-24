@@ -20,21 +20,15 @@
   when:  waagent_info.changed
 
 
-- name: Remove
-  blockinfile:
-    path: /etc/yum.repos.d/rh-cloud.repo
-    block: |
-      [rhui-rhel-7-server-rhui-optional-rpms]
-      name=Red Hat Enterprise Linux 7 Server - Optional from RHUI (RPMs)
-      baseurl=https://rhui-1.microsoft.com/pulp/repos//content/dist/rhel/rhui/server/7/$releasever/$basearch/optional/os
-              https://rhui-2.microsoft.com/pulp/repos//content/dist/rhel/rhui/server/7/$releasever/$basearch/optional/os
-              https://rhui-3.microsoft.com/pulp/repos//content/dist/rhel/rhui/server/7/$releasever/$basearch/optional/os
-      enabled=0
-      gpgcheck=1
-      gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
-      sslverify=1
-      sslclientcert=/etc/pki/rhui/product/content.crt
-      sslclientkey=/etc/pki/rhui/key.pem
-    state: absent
+- name: Enabled rhel-7-server-rhui-optional-rpms repo
+  template:
+    src: template/rh-cloud-repo.j2
+    dest: /etc/yum.repos.d/rh-cloud.repo
+    owner: root
+    group: root
+    mode: '0644'
     backup: yes
+
+ 
+    
 
